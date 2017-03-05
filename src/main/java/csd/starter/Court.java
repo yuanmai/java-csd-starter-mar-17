@@ -14,6 +14,15 @@ public class Court {
 	private int x;
 	private int y;
 
+	public Court(int id, String name, int price, Set<String> orderedTime, int x, int y) {
+		this.setId(id);
+		this.setName(name);
+		this.setPrice(price);
+		this.setOrderedTime(orderedTime);
+		this.setX(x);
+		this.setY(y);
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -61,4 +70,5 @@ public class Court {
 	public void setY(int y) {
 		this.y = y;
 	}
+
 }
