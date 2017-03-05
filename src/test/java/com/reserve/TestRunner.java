@@ -1,7 +1,16 @@
 package com.reserve;
 
-/**
- * Created by linyihang on 2017/3/5.
- */
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        plugin = {"pretty"},
+        monochrome = true,
+        features = {
+                "src/features/reserve"
+        }
+)
 public class TestRunner {
 }
