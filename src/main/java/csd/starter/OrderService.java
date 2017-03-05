@@ -13,7 +13,7 @@ public class OrderService {
 	 * @param minutes
 	 * @return
 	 */
-	public static boolean order(String userName, Date startTime, Integer minutes) {
+	public static Boolean order(String userName, Date startTime, Integer minutes) {
 		if (null == userName || "".equals(userName)) {
 			throw new RuntimeException("用户不可为空");
 		}
@@ -27,6 +27,7 @@ public class OrderService {
 		if (startTime.getTime() - System.currentTimeMillis() < 0) {
 			return false;
 		}
+		//todo 获取已经发布的信息，调用发布API。进行判断
 		return true;
 	}
 }
