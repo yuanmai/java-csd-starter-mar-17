@@ -1,14 +1,31 @@
 package csd.starter;
 
-import java.util.Queue;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
 
     public static void main(String[] args) {
-//
-//        Stack
-//        System.setIn();
-//        System.setOut();
+        boolean stop = true;
+
+        while (stop) {
+            System.out.print("choose your role (P / M):");
+            try {
+                BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+                String role = RoleSelector.select(in.readLine());
+                if (role.equals("M")) {
+                    // TODO 管理员
+                } else if (role.equals("P")) {
+                    // TODO 用户
+                } else {
+                    System.out.println("illegal role");
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
