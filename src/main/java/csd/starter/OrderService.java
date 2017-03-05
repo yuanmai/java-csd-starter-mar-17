@@ -13,7 +13,7 @@ public class OrderService {
 	 * @param minutes
 	 * @return
 	 */
-	public static boolean order(String userName, Date startTime, Integer minutes) {
+	public static Boolean order(String userName, Date startTime, Integer minutes) {
 		if (null == userName || "".equals(userName)) {
 			throw new RuntimeException("用户不可为空");
 		}
