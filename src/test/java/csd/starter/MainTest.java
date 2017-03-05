@@ -21,10 +21,7 @@ public class MainTest {
         Scanner scanner = new Scanner("fake input");
         Scanner scanner1 = new Scanner(System.in);
 
-        System.setIn();
-        System.setOut();
 
-        Main.main();
 
     }
 
