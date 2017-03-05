@@ -2,8 +2,6 @@ package csd.starter;
 
 import static org.junit.Assert.assertEquals;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.Test;
@@ -20,7 +18,6 @@ public class MainTest {
 		//昨天预定之前的时间 
 		startTime = new Date((new Date()).getTime() - 1000);
 		assertEquals(false, OrderService.order(userName, startTime, order));
-
 	}
 
 	//	@Test
