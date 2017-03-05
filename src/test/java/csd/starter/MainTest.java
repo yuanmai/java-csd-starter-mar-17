@@ -12,6 +12,7 @@ public class MainTest {
 	public void orderTest() throws Exception {
 		String userName = "jack";
 		Integer order = 30;
+        
 		//正常逻辑 比当前时间大1000
 		Date startTime = new Date((new Date()).getTime() + 1000);
 		assertEquals(true, OrderService.order(userName, startTime, order));
