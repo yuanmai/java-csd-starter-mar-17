@@ -9,13 +9,7 @@ import java.util.function.Function;
 import static org.junit.Assert.assertEquals;
 
 public class ReservationTest {
-    @Test
-    public void listTest() {
-        String member = "";
-        String area = "";
-        Date date = new Date();
-        assertEquals(Integer.valueOf(2), Reservator.getInstance().list(member));
-    }
+
 
     @Test
     public void bookTest() {
