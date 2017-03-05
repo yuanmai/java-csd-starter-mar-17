@@ -1,8 +1,16 @@
 package csd.starter;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.junit.Assert;
 import org.junit.Test;
+import sun.misc.IOUtils;
+import sun.nio.ch.IOUtil;
 
+import javax.sql.rowset.serial.SerialRef;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.text.ParseException;
 import java.util.Scanner;
 import java.util.function.Function;
@@ -20,16 +28,13 @@ public class MainTest {
 
     @Test
     public void uat() throws ParseException {
-//        Scanner scanner = new Scanner("fake input");
-//        Scanner scanner1 = new Scanner(System.in);
-
-//        System.setIn();
-//        System.setOut();
-//
-//        Main.main();
-        Assert.assertEquals(true,Main.reserve("2017-03-05 19:00","2017-03-05 21:00"));
-        Assert.assertEquals(false,Main.reserve("2017-03-05 22:00","2017-03-05 21:00"));
-
+        String inputText = "2017-03-05 01:00to2017-03-05 12:00end";
+        System.setIn(new ByteArrayInputStream(inputText.getBytes()));
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+        System.setOut(ps);
+        Main.main(null);
+        Assert.assertEquals("true", baos.toString());
     }
 
 
