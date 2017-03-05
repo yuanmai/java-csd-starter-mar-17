@@ -27,6 +27,7 @@ public class OrderService {
 		if (startTime.getTime() - System.currentTimeMillis() < 0) {
 			return false;
 		}
+		//todo 获取已经发布的信息，调用发布API。进行判断
 		return true;
 	}
 }
