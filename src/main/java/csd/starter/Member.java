@@ -8,7 +8,7 @@ import java.util.Map;
 public class Member {
     private String id;
     private String name;
-    private Map.Entry<Float, Float> location;
+    private int[] location;
     private boolean isPremium;
 
     public String getId() {
@@ -19,11 +19,27 @@ public class Member {
         return name;
     }
 
-    public Map.Entry<Float, Float> getLocation() {
+    public int[] getLocation() {
         return location;
     }
 
     public boolean isPremium() {
         return isPremium;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLocation(int[] location) {
+        this.location = location;
+    }
+
+    public void setPremium(boolean premium) {
+        isPremium = premium;
     }
 }
