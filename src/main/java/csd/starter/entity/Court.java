@@ -1,4 +1,4 @@
-package csd.starter;
+package csd.starter.entity;
 
 import java.util.Set;
 

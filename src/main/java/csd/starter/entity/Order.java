@@ -1,4 +1,4 @@
-package csd.starter;
+package csd.starter.entity;
 
 import java.util.Set;
 
@@ -6,26 +6,28 @@ import java.util.Set;
  * Created by suzf on 2017/3/5.
  */
 public class Order {
-    private String id;
-    private String courtId;
+    private int id;
+    private int courtId;
     private String username;
     private Set<String> dates;
     private double totalPrice;
     private String phone;
 
-    public String getId() {
+    private boolean paid;
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getCourtId() {
+    public int getCourtId() {
         return courtId;
     }
 
-    public void setCourtId(String courtId) {
+    public void setCourtId(int courtId) {
         this.courtId = courtId;
     }
 
@@ -59,5 +61,13 @@ public class Order {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 }
