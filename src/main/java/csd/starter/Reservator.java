@@ -1,18 +1,17 @@
 package csd.starter;
 
-import java.util.Date;
-
 /**
  * Created by shenzx on 3/5/17.
  */
 public class Reservator {
 
     public static Reservator getInstance() {
-        return null;
+        return new Reservator();
     }
 
 
-    public boolean book(String memberId, String area, Date startDate, Date endDate) {
-        return false;
+    public Order book(String memberId, String courtName, String startDate, String endDate) {
+        //TODO:
+        return new Order(memberId, courtName, startDate, endDate, true);
     }
 }
