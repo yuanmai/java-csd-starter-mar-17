@@ -17,7 +17,7 @@ public class Main {
             try {
                 cmd = CMD.valueOf(cmdStr);
             } catch (Exception e) {
-                System.out.println("请输出已知的命令(F/B/Q)");
+                //System.out.println("请输出已知的命令(F/B/Q)");
             }
             switch (cmd) {
                 case B:
