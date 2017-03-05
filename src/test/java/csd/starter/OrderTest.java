@@ -11,16 +11,16 @@ public class OrderTest {
 	@Test
 	public void order() {
 
-		Assert.assertEquals(true, Court.order("jack", 1, "2017-03-05 14"));
-		Assert.assertEquals(true, Court.order("jack", 1, "2017-03-05 15"));
-		Assert.assertEquals(false, Court.order("jack", 1, "2017-03-05 14"));
+		Assert.assertEquals(true, CourtService.order("jack", 1, "2017-03-05 14"));
+		Assert.assertEquals(true, CourtService.order("jack", 1, "2017-03-05 15"));
+		Assert.assertEquals(false, CourtService.order("jack", 1, "2017-03-05 14"));
 
-		Assert.assertEquals(false, Court.order("jack", 0, "2017-03-05 19"));
+		Assert.assertEquals(false, CourtService.order("jack", 0, "2017-03-05 19"));
 
 	}
 
 	@Test
 	public void courtInfo() {
-		Assert.assertNotNull(Court.getCourt());
+		Assert.assertNotNull(CourtService.getCourt());
 	}
 }

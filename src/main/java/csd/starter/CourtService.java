@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * Created by liangxg on 2017/3/5.
  */
-public class Court {
+public class CourtService {
 
 	private static HashMap<Integer, String> courts = new HashMap<>();
 
