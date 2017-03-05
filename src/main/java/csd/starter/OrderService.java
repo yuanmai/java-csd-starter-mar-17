@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class OrderService {
 	/**
-	 * Ô¤¶¨
+	 * é¢„å®š
 	 * @param userName
 	 * @param startTime
 	 * @param order
@@ -15,14 +15,14 @@ public class OrderService {
 	 */
 	public static boolean order(String userName, Date startTime, Integer order) {
 		if (null == userName || "".equals(userName)) {
-			throw new RuntimeException("ÓÃ»§²»¿ÉÎª¿Õ");
+			throw new RuntimeException("ç”¨æˆ·ä¸å¯ä¸ºç©º");
 		}
 		if (null == startTime) {
-			throw new RuntimeException("Ô¤¶¨¿ªÊ¼Ê±¼ä²»¿ÉÎª¿Õ");
+			throw new RuntimeException("é¢„å®šå¼€å§‹æ—¶é—´ä¸å¯ä¸ºç©º");
 		}
 
 		if (null == order || order <= 0) {
-			throw new RuntimeException("Ô¤¶¨Ê±³¤²»¿ÉÎª¿Õ»òÕßĞ¡ÓÚ0");
+			throw new RuntimeException("é¢„å®šæ—¶é•¿ä¸å¯ä¸ºç©ºæˆ–è€…å°äº0");
 		}
 		if (startTime.getTime() - System.currentTimeMillis() < 0) {
 			return false;
