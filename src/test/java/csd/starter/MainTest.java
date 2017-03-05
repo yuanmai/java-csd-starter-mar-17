@@ -6,6 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.function.Function;
 
@@ -17,7 +18,9 @@ public class MainTest {
     public void lambda() {
         Function<Integer, Integer> inc = (i) -> i + 1;
 
-        assertEquals(Integer.valueOf(2), inc.apply(2));
+        assertEquals(Integer.valueOf(3), inc.apply(2));
+
+        assertEquals(new ArrayList<>(), new ArrayList<>());
     }
 
     @Test
