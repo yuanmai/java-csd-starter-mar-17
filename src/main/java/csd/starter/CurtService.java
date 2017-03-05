@@ -8,6 +8,7 @@ import java.util.List;
 public class CurtService {
     public List<Court> getCurtTimeAndFee(){
         List<Court> courtList = new ArrayList<>();
+
         Court courtA = new Court();
         courtA.courtName = "courtA";
         courtA.price = 10;
