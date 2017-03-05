@@ -37,7 +37,7 @@ public class MainTest {
         String content = baos.toString();
         Assert.assertEquals("OK", content);
         System.out.println(content);
-        System.exit(0);
+        //System.exit(0);
     }
 
 }
