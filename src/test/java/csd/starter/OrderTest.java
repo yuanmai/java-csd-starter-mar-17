@@ -10,17 +10,19 @@ import junit.framework.Assert;
 public class OrderTest {
 	@Test
 	public void order() {
-
 		Assert.assertEquals(true, CourtService.order("jack", 1, "2017-03-05 14"));
 		Assert.assertEquals(true, CourtService.order("jack", 1, "2017-03-05 15"));
 		Assert.assertEquals(false, CourtService.order("jack", 1, "2017-03-05 14"));
-
 		Assert.assertEquals(false, CourtService.order("jack", 0, "2017-03-05 19"));
-
 	}
 
 	@Test
 	public void courtInfo() {
 		Assert.assertNotNull(CourtService.getCourt());
 	}
+
+	//	@Test
+	//	public void getNearestCourt() {
+	//		Assert.assertEquals(new ArrayList<>(), CourtService.getCourt());
+	//	}
 }
