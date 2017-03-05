@@ -14,6 +14,7 @@ public class CurtService {
         courtA.price = 10;
         courtA.courtXY =  new int[]{1,2};
 
+
         Court courtB = new Court();
         courtA.courtName = "courtB";
         courtA.price = 20;
