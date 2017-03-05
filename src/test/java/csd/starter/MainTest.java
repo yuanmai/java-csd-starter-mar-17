@@ -18,13 +18,6 @@ public class MainTest {
 
     @Test
     public void uat() {
-        Scanner scanner = new Scanner("fake input");
-        Scanner scanner1 = new Scanner(System.in);
-
-        System.setIn();
-        System.setOut();
-
-        Main.main();
 
     }
 
