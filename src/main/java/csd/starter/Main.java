@@ -15,9 +15,9 @@ public class Main {
                 BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
                 String role = RoleSelector.select(in.readLine());
                 if (role.equals("M")) {
-                    // TODO 管理员
+                    // TODO 绠＄悊鍛�
                 } else if (role.equals("P")) {
-                    // TODO 用户
+                    // TODO 鐢ㄦ埛
                 } else {
                     System.out.println("illegal role");
                 }
