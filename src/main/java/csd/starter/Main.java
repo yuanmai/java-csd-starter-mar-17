@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     enum CMD {
-        F, B, Q
+        F, B, Q, H
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);// 接收控制台输入的信息
@@ -13,7 +13,12 @@ public class Main {
         System.out.println("请输出已知的命令(F/B/Q)");
         while(true) {
             String cmdStr = scan.next();
-            CMD cmd = CMD.valueOf(cmdStr);
+            CMD cmd = CMD.H;
+            try {
+                cmd = CMD.valueOf(cmdStr);
+            } catch (Exception e) {
+                System.out.println("请输出已知的命令(F/B/Q)");
+            }
             switch (cmd) {
                 case B:
                     System.out.println("预定的场地与时间段:");
@@ -25,6 +30,9 @@ public class Main {
                     break;
                 case Q:
                     System.exit(0);
+                case H:
+                default:
+                    System.out.println("请输出已知的命令(F/B/Q)");
             }
         }
 
