@@ -21,7 +21,7 @@ public class PreminumMemberBook {
         bookInfoMap.put(court,date);
         preminumBookInfo.put(member.getId(),bookInfoMap);
 
-        Reservator.getInstance().book(member.getId(),court.courtName,date,date);
+        Reservator.getInstance().booking(member.getId(),court.courtName,date,date);
         Map<Court,String> courtInfo = new HashMap<Court,String>();
         courtInfo.put(court,date);
 

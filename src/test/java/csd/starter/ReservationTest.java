@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
-/*
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty"},
@@ -19,19 +19,8 @@ import static org.junit.Assert.assertEquals;
                 "src/features/booking"
         }
 )
-*/
+
 public class ReservationTest {
 
-    @Test
-    public void bookTest() {
-        String memberId = "";
-        String courtName = "";
-        String startDate = "";
-        String endDate = "";
 
-        Order successOrder = new Order(memberId, courtName, startDate, endDate, true);
-        Order failOrder = new Order(memberId, courtName, startDate, endDate, false);
-        assertEquals(successOrder, Reservator.getInstance().book(memberId, courtName, startDate, endDate));
-        //assertEquals(failOrder, Reservator.getInstance().book(memberId, courtName, startDate, endDate));
-    }
 }
