@@ -1,11 +1,13 @@
 package csd.starter;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-
+import java.util.concurrent.ExecutionException;
 
 
 public class CurtService {
+    private static   List<String> pubList = new LinkedList<>();
     public List<Court> getCurtTimeAndFee(){
         List<Court> courtList = new ArrayList<>();
         Court courtA = new Court();
@@ -27,4 +29,23 @@ public class CurtService {
         courtList.add(courtC);
         return  courtList;
     }
+
+    public String  pub(String courtName, int price, int[] courtXY) throws Exception {
+
+        if(price < 0){
+            throw new Exception();
+        }
+        if(!pubList.contains(courtName)) {
+            pubList.add(courtName);
+            return "pub succss";
+        }else {
+            return "pub fail";
+        }
+    }
+
+    public void resetPubList(){
+        pubList.clear();
+    }
+
+
 }
