@@ -26,6 +26,9 @@ public class CourtFinderTest {
 
     @Test
     public void testFind() {
+        CourtFinder obj = new CourtFinder();
+        assertEquals(obj, obj);
+
         assertEquals(1, CourtFinder.findCourt(5, 5));
 
         assertEquals(2, CourtFinder.findCourt(10, 10));

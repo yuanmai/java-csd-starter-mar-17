@@ -37,6 +37,8 @@ public class MainTest {
 			Main.main(null);
 			String result = baos.toString();
 			Assert.assertEquals("false", result);
+		}catch (Exception e){
+			e.printStackTrace();
 		}
 		finally {
 			System.setOut(stdout);
@@ -60,6 +62,8 @@ public class MainTest {
 			Main.main(null);
 			String result = baos.toString();
 			Assert.assertEquals("3", result);
+		}catch (Exception e){
+			e.printStackTrace();
 		}
 		finally {
 			System.setOut(stdout);
