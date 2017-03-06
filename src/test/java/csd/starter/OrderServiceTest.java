@@ -3,67 +3,84 @@ package csd.starter;
 import csd.starter.entity.Order;
 import csd.starter.entity.OrderForm;
 import csd.starter.entity.OrderPayResult;
-import org.junit.Assert;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Created by suzf on 2017/3/5.
  */
 public class OrderServiceTest {
-    @Test
-    public void order() {
+    private OrderForm form = new OrderForm();
+
+    @Before
+    public void before() {
         //初始预约
-        OrderForm form1 = new OrderForm();
-        form1.setCourtId(1);
-        form1.setUser("suzf");
-        form1.setOrderDate("2017-03-05");
-        form1.setHourStart(10);
-        form1.setHourEnd(12);
-        Order order1 = OrderService.order(form1);
-        Assert.assertEquals(1, order1.getCourtId());
-        Assert.assertEquals(60D, order1.getTotalPrice(), 0);
+        form.setCourtId(1);
+        form.setUser("suzf");
+        form.setOrderDate("2017-03-05");
+        form.setHourStart(10);
+        form.setHourEnd(12);
+    }
 
-        //不存在场地预约
-        OrderForm form2 = new OrderForm();
-        form2.setCourtId(999999);
-        form2.setUser("suzf");
-        form2.setOrderDate("2017-03-05");
-        form2.setHourStart(10);
-        form2.setHourEnd(12);
-        Assert.assertNull(OrderService.order(form2));
+    @After
+    public void after() {
 
-        //重复预约测试
-        OrderForm form3 = new OrderForm();
-        form3.setCourtId(1);
-        form3.setUser("suzf");
-        form3.setOrderDate("2017-03-05");
-        form3.setHourStart(10);
-        form3.setHourEnd(12);
-        Assert.assertNull(OrderService.order(form3));
     }
 
     @Test
-    public void payOrder() {
-        //初始预约
-        OrderForm form1 = new OrderForm();
-        form1.setCourtId(1);
-        form1.setUser("suzf");
-        form1.setOrderDate("2017-03-05");
-        form1.setHourStart(14);
-        form1.setHourEnd(16);
-        Order order1 = OrderService.order(form1);
-        Assert.assertEquals(1, order1.getCourtId());
-        Assert.assertEquals(60D, order1.getTotalPrice(), 0);
+    public void firstCourtOrderShouldBeSuccess() {
 
+        Order order = OrderService.order(form);
+
+        assertEquals(1, order.getCourtId());
+
+        assertEquals(60D, order.getTotalPrice(), 0);
+    }
+
+    @Test
+    public void nonexistCourtOrderShouldBeNull() {
+        //不存在场地预约
+        form.setCourtId(999999);
+
+        assertNull(OrderService.order(form));
+    }
+
+    @Test
+    public void repeatedCourtOrderShouldBeNull() {
+        form.setCourtId(2);
+        //重复预约测试
+        OrderService.order(form);
+
+        assertNull(OrderService.order(form));
+    }
+
+    @Test
+    public void payNonexistOrderShouldFail() {
+        OrderService.order(form);
         //订单不存在
-        Assert.assertEquals(OrderPayResult.ORDER_NOT_FOUND, OrderService.payOrder(10, 30D));
-        //金额不足
-        Assert.assertEquals(OrderPayResult.NOT_ENOUGH, OrderService.payOrder(1, 30D));
-        //金额正常
-        Assert.assertEquals(OrderPayResult.SUCCESS, OrderService.payOrder(1, 60D));
-        //已付款
-        Assert.assertEquals(OrderPayResult.PAID, OrderService.payOrder(1, 60D));
+        assertEquals(OrderPayResult.ORDER_NOT_FOUND, OrderService.payOrder(9999, 60D));
+    }
 
+    @Test
+    public void payOrderWithLessMoneyShouldBeFail() {
+        //金额不足
+        assertEquals(OrderPayResult.NOT_ENOUGH, OrderService.payOrder(1, 30D));
+    }
+
+    @Test
+    public void payOrderWithEnoughMoneyShouldBeSuccess() {
+        //金额正常
+        assertEquals(OrderPayResult.PAID, OrderService.payOrder(1, 60D));
+    }
+
+    @Test
+    public void payPaidOrderShouldBeFail() {
+        //已付款
+        assertEquals(OrderPayResult.SUCCESS, OrderService.payOrder(1, 60D));
     }
 
 }
