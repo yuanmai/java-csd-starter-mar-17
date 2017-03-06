@@ -11,15 +11,15 @@ public class ProcessDataService {
 
 	private static final HashMap<String, Object> dataCache = new HashMap<>();
 
-	public static void setData(ProcessDataEnum key, Object obj) {
-		if (StringUtils.isBlank(key.getKey())) {
+	public static void setData(String key, Object obj) {
+		if (StringUtils.isBlank(key)) {
 			throw new RuntimeException("key is null!");
 		}
-		dataCache.put(key.getKey(), obj);
+		dataCache.put(key, obj);
 	}
 
-	public static Object get(ProcessDataEnum key) {
-		if (StringUtils.isBlank(key.getKey())) {
+	public static Object get(String key) {
+		if (StringUtils.isBlank(key)) {
 			throw new RuntimeException("key is null!");
 		}
 		return dataCache.get(key);

@@ -2,10 +2,15 @@ package csd.starter;
 
 import java.util.Date;
 
+import csd.starter.bean.OrderBean;
+
 /**
  * Created by wangsu on 2017/3/5.
  */
 public class OrderService {
+
+	private static final String PROCESS_DATA_KEY = "ORDER_PROCESS_DATA_KEY";
+
 	/**
 	 * 预定
 	 * @param userName
@@ -26,6 +31,17 @@ public class OrderService {
 		if (startTime.getTime() - System.currentTimeMillis() < 0) {
 			return false;
 		}
+		ProcessDataService.setData(PROCESS_DATA_KEY, new OrderBean(userName, startTime, minutes));
 		return true;
+	}
+
+	public static OrderBean getCurrOrder() {
+		Object obj = ProcessDataService.get(PROCESS_DATA_KEY);
+		if (null == obj) {
+			return null;
+		}
+		else {
+			return (OrderBean) obj;
+		}
 	}
 }
