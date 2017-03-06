@@ -8,6 +8,7 @@ public class Main {
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);// 接收控制台输入的信息
+        System.out.println("~~~ 欢迎预定网球场地 ~~~");
         System.out.println("请输入用户：");
         String userName = scan.next();
         System.out.println("请输出已知的命令(F/B/Q)");
@@ -25,7 +26,7 @@ public class Main {
                     String area = scan.next();
                     String sDate = scan.next();
                     String eDate = scan.next();
-                    Order order = Reservator.getInstance().book(userName, area, sDate, eDate);
+                    Order order = Reservator.getInstance().booking(userName, area, sDate, eDate);
                     System.out.println(order);
                     break;
                 case Q:
