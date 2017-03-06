@@ -33,12 +33,31 @@ public class ReserveStepDefines {
         //throw new PendingException();
     }
 
+    @When("^area \"([^\"]*)\" during \"([^\"]*)\" and \"([^\"]*)\" had been subcibed$")
+    public void area_during_time_had_been_subcibed(String arg1, String arg2, String arg3) throws Throwable {
+        String in = "admin" + " " + arg2 + " " + arg3 + " " + arg1 + " ";
+        System.setIn(new BufferedInputStream(new ByteArrayInputStream(in.getBytes("UTF-8"))));
+        System.setOut(new PrintStream(baos));
+        Main.main(null);
+        System.setIn(oldIn);
+        System.setOut(oldOut);
+        Assert.assertEquals("OK", oldOut);
+    }
+
     @Then("^the out put should be \"([^\"]*)\"$")
     public void the_out_put_should_be(String arg1) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
         Assert.assertEquals(arg1, content);
         System.out.println(content);
+
+        String in = "exit";
+        System.setIn(new BufferedInputStream(new ByteArrayInputStream(in.getBytes("UTF-8"))));
+        System.setOut(new PrintStream(baos));
+        Main.main(null);
+        System.setIn(oldIn);
+        System.setOut(oldOut);
+        Assert.assertEquals("bye~", oldOut);
     }
 
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
