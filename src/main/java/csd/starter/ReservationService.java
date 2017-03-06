@@ -16,22 +16,22 @@ import com.google.common.collect.Lists;
  */
 public class ReservationService {
 
-    private static Map<String, List<Integer>> reservationInfo = new HashMap<>();
+	private Map<String, List<Integer>> reservationInfo = new HashMap<>();
 
-    public boolean reserve(String site, List<Integer> duration) {
+	public boolean reserve(String site, List<Integer> duration) {
 
-        List<Integer> reservationDuration = reservationInfo.get(site);
-        if (reservationDuration == null) {
-            reservationDuration = Lists.newArrayList();
-            reservationInfo.put(site, reservationDuration);
-        }
-        if (CollectionUtils.containsAny(reservationDuration, duration)) {
-            return false;
-        } else {
-            reservationDuration.addAll(duration);
-        }
+		List<Integer> reservationDuration = reservationInfo.get(site);
+		if (reservationDuration == null) {
+			reservationDuration = Lists.newArrayList();
+			reservationInfo.put(site, reservationDuration);
+		}
+		if (CollectionUtils.containsAny(reservationDuration, duration)) {
+			return false;
+		} else {
+			reservationDuration.addAll(duration);
+		}
 
-        return true;
-    }
+		return true;
+	}
 
 }
