@@ -16,6 +16,12 @@ public class CourtFinder {
         courtList.add(new Court().setId(4).setLongitude(200).setLatitude(200));
     }
 
+    /**
+     * pandalxb
+     * @param longitude
+     * @param latitude
+     * @return
+     */
     public static int findCourt(double longitude, double latitude) {
         int id = 0;
         //return (int) (longitude / 5);

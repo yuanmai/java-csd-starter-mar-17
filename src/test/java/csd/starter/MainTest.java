@@ -29,6 +29,29 @@ public class MainTest {
 		}
 	}
 
+	/**
+	 * pandalxb
+	 * testFindCourt
+	 */
+	@Test
+	public void testFindCourt(){
+		String data = "FIND_COURT,15,15";
+		InputStream stdin = System.in;
+		PrintStream stdout = System.out;
+		try {
+			System.setIn(new ByteArrayInputStream(data.getBytes()));
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			System.setOut(new PrintStream(baos));
+			Main.main(null);
+			String result = baos.toString();
+			Assert.assertEquals("3", result);
+		}
+		finally {
+			System.setOut(stdout);
+			System.setIn(stdin);
+		}
+	}
+
 	@Test
 	public void lambda() {
 		//        Function<Integer, Integer> inc = (i) -> i + 1;
