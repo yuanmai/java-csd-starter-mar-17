@@ -28,7 +28,7 @@ public class OrderServiceTest {
 
     @After
     public void after() {
-
+        OrderService.clearOrders();
     }
 
     @Test
@@ -67,20 +67,24 @@ public class OrderServiceTest {
 
     @Test
     public void payOrderWithLessMoneyShouldBeFail() {
+        OrderService.order(form);
         //金额不足
         assertEquals(OrderPayResult.NOT_ENOUGH, OrderService.payOrder(1, 30D));
     }
 
     @Test
     public void payOrderWithEnoughMoneyShouldBeSuccess() {
+        OrderService.order(form);
         //金额正常
-        assertEquals(OrderPayResult.PAID, OrderService.payOrder(1, 60D));
+        assertEquals(OrderPayResult.SUCCESS, OrderService.payOrder(1, 60D));
     }
 
     @Test
     public void payPaidOrderShouldBeFail() {
+        OrderService.order(form);
+        OrderService.payOrder(1, 60D);
         //已付款
-        assertEquals(OrderPayResult.SUCCESS, OrderService.payOrder(1, 60D));
+        assertEquals(OrderPayResult.PAID, OrderService.payOrder(1, 60D));
     }
 
 }

@@ -25,6 +25,13 @@ public class OrderService {
         courts.add(new Court(5, "云顶山庄", 30, set, 2, 2));
     }
 
+    public static void clearOrders() {
+        orders.clear();
+        for  (Court court : courts) {
+            court.setOrderedTime(new HashSet<String>());
+        }
+    }
+
     public static List<Court> getCourt() {
         return courts;
     }
@@ -77,7 +84,6 @@ public class OrderService {
         Order order = new Order();
         order.setCourtId(form.getCourtId());
         order.setUsername(form.getUser());
-        order.setPhone(form.getPhone());
         order.setDates(orderedTimes);
         order.setId(orders.size() + 1);
         order.setTotalPrice(court.getPrice() * orderedTimes.size());
