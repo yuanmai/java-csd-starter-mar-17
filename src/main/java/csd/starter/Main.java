@@ -6,6 +6,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class Main {
+    static {
+		CourtDatabase.courtList.add(new Court().setId(1).setLongitude(5).setLatitude(5));
+		CourtDatabase.courtList.add(new Court().setId(2).setLongitude(10).setLatitude(10));
+		CourtDatabase.courtList.add(new Court().setId(3).setLongitude(15).setLatitude(15));
+		CourtDatabase.courtList.add(new Court().setId(4).setLongitude(200).setLatitude(200));
+	}
 
 	public static void main(String[] args) {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
