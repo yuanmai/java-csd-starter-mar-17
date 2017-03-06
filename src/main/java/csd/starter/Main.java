@@ -1,6 +1,5 @@
 package csd.starter;
 
-import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,9 +14,9 @@ public class Main {
         while (true) {
             String line = s.nextLine();
             inputText.append(line).append("to");
-            if (line.equals("exit")) break;
+            if (line.contains("end")) break;
         }
-        String[] split = inputText.toString().split("to");
+        String[] split = inputText.toString().substring(0, inputText.toString().indexOf("end")).split("to");
         boolean reserve = reserve(split[0], split[1]);
         PrintStream ps = new PrintStream(System.out);
         ps.print(reserve);
@@ -32,4 +31,5 @@ public class Main {
         }
         return true;
     }
+
 }

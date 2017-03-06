@@ -1,21 +1,12 @@
 package csd.starter;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.junit.Assert;
 import org.junit.Test;
-import sun.misc.IOUtils;
-import sun.nio.ch.IOUtil;
 
-import javax.sql.rowset.serial.SerialRef;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.text.ParseException;
-import java.util.Scanner;
-import java.util.function.Function;
-
-import static org.junit.Assert.assertEquals;
 
 public class MainTest {
 
