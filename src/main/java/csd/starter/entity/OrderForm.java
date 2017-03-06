@@ -9,6 +9,7 @@ public class OrderForm {
     private String orderDate;
     private int hourStart;
     private int hourEnd;
+    private String phone;
 
     public int getCourtId() {
         return courtId;
@@ -48,5 +49,13 @@ public class OrderForm {
 
     public void setHourEnd(int hourEnd) {
         this.hourEnd = hourEnd;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

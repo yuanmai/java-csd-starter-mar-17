@@ -70,4 +70,17 @@ public class Order {
     public void setPaid(boolean paid) {
         this.paid = paid;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", courtId=" + courtId +
+                ", username='" + username + '\'' +
+                ", dates=" + dates +
+                ", totalPrice=" + totalPrice +
+                ", phone='" + phone + '\'' +
+                ", paid=" + paid +
+                '}';
+    }
 }

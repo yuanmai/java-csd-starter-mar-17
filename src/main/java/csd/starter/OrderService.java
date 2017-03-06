@@ -77,6 +77,7 @@ public class OrderService {
         Order order = new Order();
         order.setCourtId(form.getCourtId());
         order.setUsername(form.getUser());
+        order.setPhone(form.getPhone());
         order.setDates(orderedTimes);
         order.setId(orders.size() + 1);
         order.setTotalPrice(court.getPrice() * orderedTimes.size());
