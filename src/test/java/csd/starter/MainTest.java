@@ -1,12 +1,13 @@
 package csd.starter;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.text.ParseException;
+
+import static org.junit.Assert.assertEquals;
 
 public class MainTest {
 
@@ -26,8 +27,8 @@ public class MainTest {
         System.setOut(ps);
 
         Main.main(null);
-        
-        Assert.assertEquals("true", baos.toString());
+
+        assertEquals("true", baos.toString());
     }
 
     @Test
@@ -40,7 +41,7 @@ public class MainTest {
 
         Main.main(null);
 
-        Assert.assertEquals("false", baos.toString());
+        assertEquals("false", baos.toString());
     }
 
 
