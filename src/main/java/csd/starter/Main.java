@@ -12,7 +12,7 @@ public class Main {
             String str = s.nextLine();
             if(str.equals("exit")){
                 System.out.print("bye~");
-                System.exit(0);
+                break;
             }else{
                 String[] ins=str.split(" ");
                 if(ins!=null && ins.length>=2){
@@ -24,9 +24,9 @@ public class Main {
                     timeList.add(etime);
                     boolean flag=reservationService.reserve(address, timeList);
                     if(flag){
-                        System.out.print("OK");
+                        System.out.println("OK");
                     }else{
-                        System.out.print("FAIL");
+                        System.out.println("FAIL");
                     }
                 }else{
                     System.out.println("数据格式有误，输入不能为空或以空格隔开");
