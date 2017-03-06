@@ -27,7 +27,7 @@ public class OrderService {
 
     public static void clearOrders() {
         orders.clear();
-        for  (Court court : courts) {
+        for (Court court : courts) {
             court.setOrderedTime(new HashSet<String>());
         }
     }
@@ -36,8 +36,12 @@ public class OrderService {
         return courts;
     }
 
-    public List<Court> getNearestCourt(int x, int y) {
-        List<Court> cs = getCourt();
+
+    public static List<Court> getNearestCourt(int x, int y) {
+        return getNearestCourt(x, y, getCourt());
+    }
+
+    static List<Court> getNearestCourt(final int x, final int y, List<Court> cs) {
         Collections.sort(cs, new Comparator<Court>() {
             @Override
             public int compare(Court o1, Court o2) {

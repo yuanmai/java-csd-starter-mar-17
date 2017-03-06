@@ -1,11 +1,18 @@
 package csd.starter;
 
+import csd.starter.entity.Court;
 import csd.starter.entity.Order;
 import csd.starter.entity.OrderForm;
 import csd.starter.entity.OrderPayResult;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -15,6 +22,7 @@ import static org.junit.Assert.assertNull;
  */
 public class OrderServiceTest {
     private OrderForm form = new OrderForm();
+    private List<Court> courts = new LinkedList<>();
 
     @Before
     public void before() {
@@ -24,6 +32,13 @@ public class OrderServiceTest {
         form.setOrderDate("2017-03-05");
         form.setHourStart(10);
         form.setHourEnd(12);
+
+        Set set = new HashSet();
+        courts.add(new Court(1, "奥网城", 20, set, 1, 1));
+        courts.add(new Court(2, "奥林匹克", 15, set, 3, 2));
+        courts.add(new Court(3, "京鼎", 20, set, 3, 3));
+        courts.add(new Court(4, "五缘湾", 25, set, 4, 4));
+        courts.add(new Court(5, "云顶山庄", 30, set, 2, 2));
     }
 
     @After
@@ -85,6 +100,20 @@ public class OrderServiceTest {
         OrderService.payOrder(1, 60D);
         //已付款
         assertEquals(OrderPayResult.PAID, OrderService.payOrder(1, 60D));
+    }
+
+
+
+    @Test
+    public void queryNearestCourtList(){
+        List<Court> list = OrderService.getNearestCourt(1, 2, courts);
+        Assert.assertEquals(1, list.get(0).getId());
+
+        list = OrderService.getNearestCourt(4, 3, courts);
+        Assert.assertEquals(3, list.get(0).getId());
+        Assert.assertEquals(4, list.get(1).getId());
+        Assert.assertEquals(2, list.get(2).getId());
+
     }
 
 }
