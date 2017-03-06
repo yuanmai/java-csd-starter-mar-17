@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class MainTest {
@@ -19,6 +20,8 @@ public class MainTest {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			System.setOut(new PrintStream(baos));
 			Main.main(null);
+			String result = baos.toString();
+			Assert.assertEquals("false", result);
 		}
 		finally {
 			System.setOut(stdout);
