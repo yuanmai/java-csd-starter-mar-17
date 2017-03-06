@@ -6,7 +6,7 @@ package csd.starter;
 public class InformCenter {
 
     public static boolean send(Information info) {
-        System.out.println(info.getInformation());
+        System.out.print(info.getMessage());
         return true;
     }
 
