@@ -18,7 +18,7 @@ public class MainTest {
 //    }
 
     @Test
-    public void uat() throws ParseException {
+    public void orderSuccess() throws ParseException {
         String inputText = "2017-03-05 01:00to2017-03-05 12:00end";
         System.setIn(new ByteArrayInputStream(inputText.getBytes()));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -26,6 +26,17 @@ public class MainTest {
         System.setOut(ps);
         Main.main(null);
         Assert.assertEquals("true", baos.toString());
+    }
+
+    @Test
+    public void orderFaile() throws ParseException {
+        String inputText = "2017-03-06 01:00to2017-03-05 12:00end";
+        System.setIn(new ByteArrayInputStream(inputText.getBytes()));
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+        System.setOut(ps);
+        Main.main(null);
+        Assert.assertEquals("false", baos.toString());
     }
 
 
