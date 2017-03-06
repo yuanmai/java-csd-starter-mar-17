@@ -24,7 +24,9 @@ public class MainTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
         System.setOut(ps);
+
         Main.main(null);
+        
         Assert.assertEquals("true", baos.toString());
     }
 
@@ -35,7 +37,9 @@ public class MainTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
         System.setOut(ps);
+
         Main.main(null);
+
         Assert.assertEquals("false", baos.toString());
     }
 
