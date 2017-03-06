@@ -28,16 +28,16 @@ public class ReservatorTest {
     @Test
     public void booking_the_same_court_with_conflict_day_should_be_fail() {
         String memberId = "m2";
-        String courtName = "A1";
-        String startDate = "2017-03-10";
-        String endDate = "2017-03-10";
+        String courtName = "A2";
+        String startDate = "2017-03-12";
+        String endDate = "2017-03-12";
 
         assertEquals(
                 new Order(memberId, courtName, startDate, endDate, true),
                 Reservator.getInstance().booking(memberId, courtName, startDate, endDate)
         );
 
-        endDate = "2017-03-11";
+        endDate = "2017-03-13";
 
         assertEquals(
                 new Order(memberId, courtName, startDate, endDate, false),

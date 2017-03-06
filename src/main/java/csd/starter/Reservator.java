@@ -41,16 +41,19 @@ public class Reservator {
 
     private boolean checkConflictCourtWithTime(Order order) {
         for (Order item : successOrders.values()) {
-            if (item.courtName.equals(order.courtName)
-                    && (
-                        getTime(item.startDate) > getTime(order.endDate)
-                            || getTime(item.endDate) < getTime(order.startDate)
-                    )
-                    ) {
-                return false;
+            if (!item.courtName.equals(order.courtName)) {
+                continue;
+
+            } else {
+                if (getTime(item.startDate) > getTime(order.endDate)
+                        || getTime(item.endDate) < getTime(order.startDate)) {
+                    continue;
+                } else {
+                    return true;
+                }
             }
         }
-        return successOrders.isEmpty()?false:true;
+        return false;
     }
 
     private long getTime(String date) {
