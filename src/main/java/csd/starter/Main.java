@@ -8,22 +8,24 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws Exception {
         Scanner s = new Scanner(System.in);
         StringBuilder inputText = new StringBuilder();
-        while (true) {
-            String line = s.nextLine();
-            inputText.append(line).append("to");
-            if (line.contains("end")) break;
+        String line = s.nextLine();
+        inputText.append(line);
+        boolean reserve = false;
+        try {
+            String[] split = inputText.toString().split("-");
+            reserve = reserve(split[0], split[1]);
+        } catch (Exception e) {
+            throw new Exception("parse time error");
         }
-        String[] split = inputText.toString().substring(0, inputText.toString().indexOf("end")).split("to");
-        boolean reserve = reserve(split[0], split[1]);
         PrintStream ps = new PrintStream(System.out);
         ps.print(reserve);
     }
 
     public static boolean reserve(String startTime, String endTime) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHH");
         Date startDate = format.parse(startTime);
         Date endDate = format.parse(endTime);
         if (startDate.after(endDate)) {
