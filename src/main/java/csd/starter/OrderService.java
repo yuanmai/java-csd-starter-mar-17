@@ -39,8 +39,7 @@ public class OrderService {
 		Object obj = ProcessDataService.get(PROCESS_DATA_KEY);
 		if (null == obj) {
 			return null;
-		}
-		else {
+		}else {
 			return (OrderBean) obj;
 		}
 	}

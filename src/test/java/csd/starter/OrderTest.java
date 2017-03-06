@@ -7,6 +7,8 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import csd.starter.bean.OrderBean;
+
 /**
  * Created by wangsu on 2017/3/5.
  */
@@ -18,18 +20,8 @@ public class OrderTest {
 	Date startTimeLessCurr = new Date((new Date()).getTime() - 1000);
 
 	@Test
-	public void orderTest() {
-
-		//正常逻辑 比当前时间大1000
-		Date startTime = new Date((new Date()).getTime() + 1000);
-		assertEquals(true, OrderService.order(userName, startTime, minutes));
-		//昨天预定之前的时间 
-		startTime = new Date((new Date()).getTime() - 1000);
-		assertEquals(false, OrderService.order(userName, startTime, minutes));
-	}
-
-	@Test
 	public void 正常预定() {
+		new OrderService();
 		assertEquals(true, OrderService.order(userName, startTimeMoreCurr, minutes));
 	}
 
@@ -92,5 +84,21 @@ public class OrderTest {
 			e = ex;
 		}
 		assertTrue("", "预定时长不可为空或者小于0".equals(e.getMessage()));
+	}
+
+	@Test
+	public void 预定失败时应该获取为空() {
+		OrderService.order(userName, startTimeLessCurr, minutes);
+		assertTrue("", null == OrderService.getCurrOrder());
+	}
+
+	@Test
+	public void 预定成功时应该获取对的预定信息() {
+		OrderBean order = null;
+		OrderService.order(userName, startTimeMoreCurr, minutes);
+		order = OrderService.getCurrOrder();
+
+		assertTrue("", null != order && userName.equals(order.getUserName()) && startTimeMoreCurr == order.getStartTime()
+				&& minutes.equals(order.getMinutes()));
 	}
 }
