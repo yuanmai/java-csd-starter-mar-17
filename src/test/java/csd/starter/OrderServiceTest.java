@@ -49,14 +49,14 @@ public class OrderServiceTest {
         form1.setCourtId(1);
         form1.setUser("suzf");
         form1.setOrderDate("2017-03-05");
-        form1.setHourStart(10);
-        form1.setHourEnd(12);
+        form1.setHourStart(14);
+        form1.setHourEnd(16);
         Order order1 = OrderService.order(form1);
         Assert.assertEquals(1, order1.getCourtId());
         Assert.assertEquals(60D, order1.getTotalPrice(), 0);
 
         //订单不存在
-        Assert.assertEquals(OrderPayResult.ORDER_NOT_FOUND, OrderService.payOrder(2, 30D));
+        Assert.assertEquals(OrderPayResult.ORDER_NOT_FOUND, OrderService.payOrder(10, 30D));
         //金额不足
         Assert.assertEquals(OrderPayResult.NOT_ENOUGH, OrderService.payOrder(1, 30D));
         //金额正常
