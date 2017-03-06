@@ -26,7 +26,7 @@ public class MainTest {
 	}
 
 	@Test
-	public void test() {
+	public void testShouldReturnFalseWhileOrderAPastTime() {
 		String data = "ORDER,aa,2017-03-01 11:11:11,30";
 		InputStream stdin = System.in;
 		PrintStream stdout = System.out;
@@ -51,8 +51,8 @@ public class MainTest {
 	 * testFindCourt
 	 */
 	@Test
-	public void testFindCourt(){
-		String data = "FIND_COURT,15,15";
+	public void testFindNearestCourt(){
+		String data = "FIND_COURT,15.3,15.6";
 		InputStream stdin = System.in;
 		PrintStream stdout = System.out;
 		try {

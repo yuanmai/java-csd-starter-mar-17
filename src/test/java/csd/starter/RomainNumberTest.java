@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
  * Created by weirq on 2017/3/5.
  */
 public class RomainNumberTest {
+
     @Test
     public void test(){
         assertEquals("I",RomainNumber.switchTo(1));

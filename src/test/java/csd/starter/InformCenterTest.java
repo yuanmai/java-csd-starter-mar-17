@@ -16,6 +16,8 @@ public class InformCenterTest {
 
     @Test
     public void shouldInformAfterOrder() {
+        assertEquals(info, info);
+
         assertEquals(true, InformCenter.send(info));
     }
 

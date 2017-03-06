@@ -24,7 +24,7 @@ public class Main {
 			System.out.print(resultStr);
 		}else if(param.startsWith("FIND_COURT")){
 			String[] params = param.split(",");
-			int id = CourtFinder.findCourt(Double.valueOf(params[1]), Double.valueOf(params[2]));
+			int id = CourtFinder.findNearestCourt(Double.valueOf(params[1]), Double.valueOf(params[2]));
 			resultStr = String.valueOf(id);
 			System.out.print(resultStr);
 		}

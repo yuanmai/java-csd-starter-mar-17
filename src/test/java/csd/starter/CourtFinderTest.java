@@ -25,16 +25,20 @@ public class CourtFinderTest {
     }
 
     @Test
-    public void testFind() {
-        CourtFinder obj = new CourtFinder();
-        assertEquals(obj, obj);
+    public void testShouldReturnNearestCourtId() {
+        new CourtDatabase();
+        new CourtFinder();
 
-        assertEquals(1, CourtFinder.findCourt(5, 5));
+        assertEquals(1, CourtFinder.findNearestCourt(5, 5));
 
-        assertEquals(2, CourtFinder.findCourt(10, 10));
+        assertEquals(1, CourtFinder.findNearestCourt(0, 0));
 
-        assertEquals(3, CourtFinder.findCourt(15.3, 15.3));
+        assertEquals(2, CourtFinder.findNearestCourt(10, 10));
 
-        assertEquals(4, CourtFinder.findCourt(200, 200));
+        assertEquals(3, CourtFinder.findNearestCourt(15.3, 15.3));
+
+        assertEquals(4, CourtFinder.findNearestCourt(200, 200));
+
+        assertEquals(4, CourtFinder.findNearestCourt(500, 500));
     }
 }
