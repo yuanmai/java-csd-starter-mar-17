@@ -14,7 +14,6 @@ public class Main {
     }
 
     public static void index() {
-
         System.out.println("请输入功能编号：");
         System.out.println("1.预约场地");
         System.out.println("2.查看场地信息");
