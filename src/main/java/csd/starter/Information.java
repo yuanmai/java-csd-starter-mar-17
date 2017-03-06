@@ -8,7 +8,13 @@ public class Information {
     private String receiver;
     private Court court;
 
-    public String getInformation() {
+    public Information(String sender, String receiver, Court court) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.court = court;
+    }
+
+    public String getMessage() {
         return getSender() + " sends to " + getReceiver() + ", court: " + getCourt().getId();
     }
 

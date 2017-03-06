@@ -11,11 +11,9 @@ public class InformationTest {
 
     @Test
     public void shouldReturnInformation() {
-        Information info = new Information();
-        info.setSender("Jack");
-        info.setReceiver("Rose");
-        info.setCourt(new Court().setId(1).setLongitude(5).setLatitude(5));
+        Information info = new Information("Jack", "Rose", new Court().setId(1));
+        String expectedMsg = "Jack sends to Rose, court: " + 1;
 
-        assertEquals("Jack sends to Rose, court: " + 1, info.getInformation());
+        assertEquals(expectedMsg, info.getMessage());
     }
 }
