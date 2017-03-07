@@ -41,6 +41,8 @@ public class MainTest {
 		courts.add(new Court(3, "京鼎", 20, set, 3, 3));
 		courts.add(new Court(4, "五缘湾", 25, set, 4, 4));
 		courts.add(new Court(5, "云顶山庄", 30, set, 2, 2));
+
+		OrderService.clearOrders();
 	}
 
 	@Test
@@ -125,6 +127,30 @@ public class MainTest {
 		//		assertTrue(content1[1].startsWith("1，小明，五缘湾，金额：30，未结账"));
 		assertTrue(content1[1].startsWith("1,1,suzf,金额：60.0"));
 		assertTrue(content2[1].startsWith("1,1,suzf,金额：60.0,收款：40,差额：-20.0"));
+	}
+
+	@Test
+	public void 周期性预约场地() throws UnsupportedEncodingException {
+
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+		InputStream oldIn = System.in;
+		PrintStream oldOut = System.out;
+
+		String in = "5\n1\nsuzf\n12345678\n2017-03-06\n10\n12\n3";
+		System.setIn(new BufferedInputStream(new ByteArrayInputStream(in.getBytes("UTF-8"))));
+		System.setOut(new PrintStream(byteArrayOutputStream));
+		Main.main(null);
+		System.setIn(oldIn);
+		System.setOut(oldOut);
+
+		assertTrue("5", byteArrayOutputStream.toString().contains("周期预约：\n"));
+		System.out.println(byteArrayOutputStream.toString());
+
+		assertTrue(byteArrayOutputStream.toString().contains("2017-03-06"));
+		assertTrue(byteArrayOutputStream.toString().contains("2017-03-13"));
+		assertTrue(byteArrayOutputStream.toString().contains("2017-03-20"));
+
 	}
 
 }

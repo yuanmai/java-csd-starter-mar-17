@@ -1,13 +1,19 @@
 package csd.starter;
 
-import csd.starter.entity.Court;
-import csd.starter.entity.Order;
-import csd.starter.entity.OrderForm;
-
 import java.util.List;
 import java.util.Scanner;
 
+import csd.starter.entity.Court;
+import csd.starter.entity.CycleOrderForm;
+import csd.starter.entity.Order;
+import csd.starter.entity.OrderForm;
+import csd.starter.util.DateUtil;
+
 public class Main {
+
+	private Main() {
+		throw new IllegalAccessError("");
+	}
 
 	public static void main(String[] args) {
 
@@ -20,6 +26,7 @@ public class Main {
 		System.out.println("2.查看场地信息");
 		System.out.println("3.查找最近场地");
 		System.out.println("4.订单结算");
+		System.out.println("5.周期性预约场地");
 		System.out.println("0.退出");
 
 		Scanner scanner = new Scanner(System.in);
@@ -37,6 +44,9 @@ public class Main {
 		else if (nextLine.equals("4")) {
 			payOrder(scanner);
 		}
+		else if (nextLine.equals("5")) {
+			cycleOrder(scanner);
+		}
 		else if (nextLine.equals("0")) {
 
 			System.out.println("谢谢使用");
@@ -44,6 +54,37 @@ public class Main {
 		else {
 			System.out.println("请输入正确的编号！");
 			index();
+		}
+
+	}
+
+	private static void cycleOrder(Scanner scanner) {
+		System.out.println("周期预约：");
+
+		OrderForm form = new OrderForm();
+		System.out.println("请输入：场地ID");
+		form.setCourtId(scanner.nextInt());
+		System.out.println("请输入：预约人");
+		form.setUser(scanner.next());
+		System.out.println("请输入：手机号");
+		form.setPhone(scanner.next());
+		System.out.println("请输入：预约日期（yyyy-MM-dd格式）");
+		form.setOrderDate(scanner.next());
+		System.out.println("请输入：开始时段（HH）");
+		form.setHourStart(scanner.nextInt());
+		System.out.println("请输入：结束时段（HH）");
+		form.setHourEnd(scanner.nextInt());
+
+		CycleOrderForm cycleOrderForm = new CycleOrderForm();
+		cycleOrderForm.setOrderForm(form);
+		System.out.println("请输入：重复周数）");
+		cycleOrderForm.setWeekNumber(scanner.nextInt());
+		cycleOrderForm.setStartDate(DateUtil.dateFromString(form.getOrderDate()));
+
+		List<Order> orderList = CycleOrderService.createCycleOrder(cycleOrderForm);
+		System.out.println("订单信息：");
+		for (Order order : orderList) {
+			System.out.println(order.toString());
 		}
 
 	}

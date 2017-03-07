@@ -116,4 +116,15 @@ public class OrderServiceTest {
 
     }
 
+    @Test
+    public void 周期预约(){
+
+        OrderService.order(form);
+        OrderService.payOrder(1, 60D);
+
+    }
+
+
+
+
 }
