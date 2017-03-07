@@ -6,6 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import static org.junit.Assert.*;
+
 
 /**
  * Created by hongja on 2017/3/5.
@@ -14,6 +16,11 @@ public class PreminumMemberBookTest {
     @Rule
     public ExpectedException noAPreminumMemberExcepiton = ExpectedException.none();
     Member member = new Member();
+
+    @Test
+    public void class_can_be_init(){
+        PreminumMemberBook book = new PreminumMemberBook();
+    }
 
     @Test
     public void exceptions_should_throw_exception_when_no_a_preminum(){
@@ -48,6 +55,6 @@ public class PreminumMemberBookTest {
 
         PreminumMemberBook.preminumBook(member,court,"2017-3-6 12:00:00");
 
-        Assert.assertNotNull(PreminumMemberBook.getPreminumBookInfo().get(member.getId()));
+        assertNotNull(PreminumMemberBook.getPreminumBookInfo().get(member.getId()));
     }
 }
