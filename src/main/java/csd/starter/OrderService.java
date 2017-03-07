@@ -69,22 +69,40 @@ public class OrderService {
      * @return
      */
     public static Order order(OrderForm form) {
+        if (isCourtAvailiable(form)) {
+            return creatOrder(form);
+        }
+        return null;
+    }
+
+    /**
+     * 判断场地是否可用
+     *
+     * @param form
+     * @return
+     */
+    private static boolean isCourtAvailiable(OrderForm form) {
+        //判断场地是否存在
         Court court = getCourt(form.getCourtId());
         if (court == null) {
-            return null;
+            return false;
         }
-        int cursor = form.getHourStart();
-        Set<String> orderedTimes = new HashSet<>();
-        while (cursor <= form.getHourEnd()) {
-            String time = form.getOrderDate() + " " + cursor + ":00";
-            if (!court.getOrderedTime().contains(time)) {
-                orderedTimes.add(time);
-            } else {
-                //时间冲突，无法预订
-                return null;
-            }
-            cursor++;
+        //判断场地是否时间冲突
+        if (isOrderTimeConflict(court, form)) {
+            return false;
         }
+        return true;
+    }
+
+    /**
+     * 新增订单
+     *
+     * @param form
+     * @return
+     */
+    private static Order creatOrder(OrderForm form) {
+        Court court = getCourt(form.getCourtId());
+        Set<String> orderedTimes = form.getOrderTimes();
         Order order = new Order();
         order.setCourtId(form.getCourtId());
         order.setUsername(form.getUser());
@@ -94,6 +112,23 @@ public class OrderService {
         court.getOrderedTime().addAll(orderedTimes);
         orders.put(order.getId(), order);
         return order;
+    }
+
+    /**
+     * 判断场地已预订时段是否与当前提交预订时段冲突
+     *
+     * @param court
+     * @return
+     */
+    private static boolean isOrderTimeConflict(Court court, OrderForm form) {
+        Set<String> orderTimes = form.getOrderTimes();
+        Set<String> allSet = new HashSet<>();
+        allSet.addAll(court.getOrderedTime());
+        allSet.addAll(orderTimes);
+        if (allSet.size() != court.getOrderedTime().size() + orderTimes.size()) {
+            return true;
+        }
+        return false;
     }
 
     public static Order getOrder(int i) {

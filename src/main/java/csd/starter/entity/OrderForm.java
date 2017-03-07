@@ -1,5 +1,8 @@
 package csd.starter.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by suzf on 2017/3/5.
  */
@@ -57,5 +60,16 @@ public class OrderForm {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Set<String> getOrderTimes() {
+        int cursor = getHourStart();
+        Set<String> orderedTimes = new HashSet<>();
+        while (cursor <= getHourEnd()) {
+            String time = getOrderDate() + " " + cursor + ":00";
+            orderedTimes.add(time);
+            cursor++;
+        }
+        return orderedTimes;
     }
 }
