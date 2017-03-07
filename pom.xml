@@ -7,12 +7,13 @@
     <groupId>yuanmai.me</groupId>
     <artifactId>java-csd-starter-mar-17</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
         <cucumber.version>1.2.5</cucumber.version>
         <junit.version>4.12</junit.version>
         <java.version>1.8</java.version>
         <maven.compiler.version>3.3</maven.compiler.version>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -46,6 +47,19 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <compilerArgument>-Werror</compilerArgument>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <forkMode>once</forkMode>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <excludes>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>

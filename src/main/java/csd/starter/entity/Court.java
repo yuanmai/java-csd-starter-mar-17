@@ -71,4 +71,10 @@ public class Court {
 		this.y = y;
 	}
 
+	@Override
+	public String toString() {
+		return this.id + "," + this.name + "," + this.price + "," + this.orderedTime + ",("
+				+ this.x + "," + this.y + ")";
+	}
+
 }
