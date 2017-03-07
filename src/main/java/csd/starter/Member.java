@@ -4,8 +4,9 @@ package csd.starter;
  * Created by whb on 2017/3/6.
  */
 public class Member {
-    public String name;
-    public String area;
+    private String name;// 用户名
+    private Double lat;// 用户目前所在地理位置经度
+    private Double lng;// 用户目前所在地理位置经度
 
     public String getName() {
         return name;
@@ -15,11 +16,19 @@ public class Member {
         this.name = name;
     }
 
-    public String getArea() {
-        return area;
+    public Double getLat() {
+        return lat;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 }

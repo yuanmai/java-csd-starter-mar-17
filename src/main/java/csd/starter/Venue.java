@@ -4,22 +4,25 @@ package csd.starter;
  * Created by whb on 2017/3/6.
  */
 public class Venue {
-    public String name;
-    public String area;
+    private String name;// 球场名称
+    private Double lat;// 球场所在地理位置经度
+    private Double lng;// 球场所在地理位置经度
+
+    public Venue(String name, Double lat, Double lng) {
+        this.name = name;
+        this.lat = lat;
+        this.lng = lng;
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Double getLat() {
+        return lat;
     }
 
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
+    public Double getLng() {
+        return lng;
     }
 }
