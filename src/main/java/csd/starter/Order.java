@@ -72,4 +72,8 @@ public class Order {
                 ", status=" + status +
                 '}';
     }
+
+    public String getKey() {
+        return courtName + "|" + startDate + "|" + endDate;
+    }
 }
