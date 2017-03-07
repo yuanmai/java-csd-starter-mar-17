@@ -65,9 +65,9 @@ public class Main {
 
 		orderInfo += ",收款：" + money + ",差额：" + (money - order.getTotalPrice());
 		System.out.println("结账信息：");
-        System.out.println(orderInfo);
+		System.out.println(orderInfo);
 
-    }
+	}
 
 	private static void order(Scanner scanner) {
 		OrderForm form = new OrderForm();
@@ -85,6 +85,7 @@ public class Main {
 		form.setHourEnd(scanner.nextInt());
 
 		Order order = OrderService.order(form);
+		System.out.println("订单信息：");
 		System.out.println(order.toString());
 
 	}
@@ -97,10 +98,9 @@ public class Main {
 		Integer y = Integer.parseInt(positions[1]);
 
 		List<Court> courtList = OrderService.getNearestCourt(x, y);
+		Court nearestCourt = courtList.get(0);
 		System.out.println("最近场馆：");
-		for (Court court : courtList) {
-			System.out.println(court.getId() + "," + court.getName());
-		}
+		System.out.println(nearestCourt.getId() + "," + nearestCourt.getName());
 	}
 
 }

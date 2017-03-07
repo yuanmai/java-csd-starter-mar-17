@@ -2,7 +2,6 @@ package csd.starter;
 
 import csd.starter.entity.Court;
 import csd.starter.entity.OrderForm;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -53,24 +52,26 @@ public class MainTest {
 		assertEquals(new ArrayList<>(), new ArrayList<>());
 	}
 
-
 	@Test
 	public void make_an_order() throws UnsupportedEncodingException {
 
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
 		InputStream oldIn = System.in;
 		PrintStream oldOut = System.out;
 
 		String in = "1\n1\nsuzf\n12345678\n2017-03-06\n10\n12";
 		System.setIn(new BufferedInputStream(new ByteArrayInputStream(in.getBytes("UTF-8"))));
-		System.setOut(new PrintStream(baos));
+		System.setOut(new PrintStream(byteArrayOutputStream));
 		Main.main(null);
 		System.setIn(oldIn);
 		System.setOut(oldOut);
-		String content = baos.toString();
-		Assert.assertTrue(content.contains("id=1"));
-		System.out.println(content);
+
+		System.out.println(byteArrayOutputStream.toString());
+		assertTrue("最近场馆", byteArrayOutputStream.toString().contains("订单信息：\n"));
+		assertTrue(byteArrayOutputStream.toString().contains(
+				"Order{id=1, courtId=1, username='suzf', dates=[2017-03-06 11:00, 2017-03-06 12:00, 2017-03-06 10:00], totalPrice=60.0, phone='12345678', paid=false}\n"));
+		System.out.println(byteArrayOutputStream.toString());
 	}
 
 	@Test
@@ -88,9 +89,9 @@ public class MainTest {
 		System.setIn(oldIn);
 		System.setOut(oldOut);
 		System.out.println(byteArrayOutputStream.toString());
-        assertTrue("最近场馆", byteArrayOutputStream.toString().contains("最近场馆：\n"));
+		assertTrue("最近场馆", byteArrayOutputStream.toString().contains("最近场馆：\n"));
 
-        String[] printLine = byteArrayOutputStream.toString().split("最近场馆：\n");
+		String[] printLine = byteArrayOutputStream.toString().split("最近场馆：\n");
 
 		assertTrue(printLine[1].startsWith("4,五缘湾"));
 	}
