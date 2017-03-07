@@ -39,7 +39,7 @@ public class MainTest {
 
     @Test(expected = Exception.class)
     public void throwExceptionWhenParseTimeError() throws Exception {
-        String inputText = "2017030601-201703051200";
+        String inputText = "2017030601-20170305";
         System.setIn(new ByteArrayInputStream(inputText.getBytes()));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
