@@ -7,31 +7,38 @@ public class Main {
    static Integer stime=null;
     static Integer etime=null;
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         while (true){
-            String str = s.nextLine();
-            if(str.equals("exit")){
+            String inputData = scanner.nextLine();
+            if(inputData.equals("exit")){
                 System.out.print("bye~");
-                System.exit(0);
+                break;
             }else{
-                String[] ins=str.split(" ");
-                if(ins!=null && ins.length>=2){
-                    fetchInutData(str);
+                String[] inputDataArr=inputData.split(" ");
+                if(inputDataArr!=null && inputDataArr.length>=2){
+                    fetchInutData(inputData);
                     //调用业务逻辑
-                    ReservationService reservationService=new ReservationService();
-                    List<Integer> timeList=new ArrayList<Integer>();
-                    timeList.add(stime);
-                    timeList.add(etime);
-                    boolean flag=reservationService.reserve(address, timeList);
-                    if(flag){
-                        System.out.print("OK");
-                    }else{
-                        System.out.print("FAIL");
-                    }
+                    judgeReservationTime();
                 }else{
                     System.out.println("数据格式有误，输入不能为空或以空格隔开");
                 }
             }
+        }
+    }
+
+    /**
+     * 判断球场时间是否被预约
+     */
+    private static void judgeReservationTime() {
+        ReservationService reservationService=new ReservationService();
+        List<Integer> timeList=new ArrayList<Integer>();
+        timeList.add(stime);
+        timeList.add(etime);
+        boolean flag=reservationService.reserve(address, timeList);
+        if(flag){
+            System.out.print("OK");
+        }else{
+            System.out.print("FAIL");
         }
     }
 
@@ -57,6 +64,5 @@ public class Main {
                     //System.out.println("第三个：" + ins[2]);
                 }
           }
-
     }
 }
