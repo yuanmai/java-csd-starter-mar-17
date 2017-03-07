@@ -1,7 +1,6 @@
 package csd.starter;
 
 
-import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -12,14 +11,14 @@ import static org.junit.Assert.*;
 /**
  * Created by hongja on 2017/3/5.
  */
-public class PreminumMemberBookTest {
+public class PremiumMemberBookTest {
     @Rule
-    public ExpectedException noAPreminumMemberExcepiton = ExpectedException.none();
+    public ExpectedException noAPremiumMemberException = ExpectedException.none();
     Member member = new Member();
 
     @Test
     public void class_can_be_init(){
-        PreminumMemberBook book = new PreminumMemberBook();
+        PremiumMemberBook book = new PremiumMemberBook();
     }
 
     @Test
@@ -31,21 +30,21 @@ public class PreminumMemberBookTest {
         Court court = new Court();
         court.courtName = "softwarePark";
 
-        noAPreminumMemberExcepiton.expect(RuntimeException.class);
+        noAPremiumMemberException.expect(RuntimeException.class);
 
-        PreminumMemberBook.preminumBook(member,court,"2017-3-6 12:00:00");
+        PremiumMemberBook.premiumBook(member,court,"2017-3-6 12:00:00");
     }
 
     @Test
     public void exceptions_should_throw_exception_when_enter_wrong_info(){
 
-        noAPreminumMemberExcepiton.expect(RuntimeException.class);
-        PreminumMemberBook.preminumBook(null,new Court(),"2017-3-6 12:00:00");
+        noAPremiumMemberException.expect(RuntimeException.class);
+        PremiumMemberBook.premiumBook(null,new Court(),"2017-3-6 12:00:00");
 
     }
 
     @Test
-    public void should_store_bookInfo_after_preminummember_book(){
+    public void should_store_bookInfo_after_premiumMember_book(){
 
         member.setName("jack");
         member.setId("1111");
@@ -53,8 +52,8 @@ public class PreminumMemberBookTest {
         Court court = new Court();
         court.courtName = "softwarePark";
 
-        PreminumMemberBook.preminumBook(member,court,"2017-3-6 12:00:00");
+        PremiumMemberBook.premiumBook(member,court,"2017-3-6 12:00:00");
 
-        assertNotNull(PreminumMemberBook.getPreminumBookInfo().get(member.getId()));
+        assertNotNull(PremiumMemberBook.getPremiumBookInfo().get(member.getId()));
     }
 }
